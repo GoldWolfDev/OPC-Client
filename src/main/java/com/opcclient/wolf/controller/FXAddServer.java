@@ -1,6 +1,7 @@
 package com.opcclient.wolf.controller;
 
 
+import com.opcclient.wolf.dao.CreateBase;
 import com.opcclient.wolf.exeptions.OPCErrorCL;
 import com.opcclient.wolf.model.OPCServer;
 import com.opcclient.wolf.util.Factory;
@@ -69,7 +70,7 @@ public class FXAddServer implements Initializable {
     //metod
     public void onGetOPC(ActionEvent event){
         JeasyOPCClient opc;
-        if(fxIPAddress.getText() != ""){
+        if(fxIPAddress != null){
             opc = new JeasyOPCClient(fxIPAddress.getText());
             ObservableList<String> fruits = FXCollections.
                     observableArrayList(opc.getOPCServerList());
@@ -79,25 +80,16 @@ public class FXAddServer implements Initializable {
 
     public void onAddOPC(ActionEvent event){
         OPCServer server = new OPCServer();
-        if (fxIPAddress.getText() != "" && fxOPCServerList.getValue() != null){
+        if (fxIPAddress != null && fxOPCServerList.getValue() != null){
             server.setOpcServer(fxOPCServerList.getValue());
             server.setServerName(fxIPAddress.getText());
             Factory.getInstance().getInsertDAO().addServerOPC(server);
         }
+        getServerTable();
     }
 
     public void onGetBase(ActionEvent event){
-        fxID.setCellValueFactory(new PropertyValueFactory<OPCServer, Integer>("id"));
-        fxOPCServer.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("opcServer"));
-        fxAddress.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("serverName"));
-        fxStatus.setCellValueFactory(new PropertyValueFactory<OPCServer, Integer>("ServerStatus"));
-        fxTime.setCellValueFactory(new PropertyValueFactory<OPCServer, Integer>("time"));
-        fxClientName.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("clientNameForOPC"));
-        fxGroup.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("nameGroup"));
-        List<OPCServer> list = Factory.getInstance().getSelectDAO().getOPCServer();
-        ObservableList<OPCServer> data = FXCollections.observableArrayList(list);
-        fxTable.setItems(data);
-
+        getServerTable();
     }
 
     public void onUpdate(ActionEvent event){
@@ -112,7 +104,7 @@ public class FXAddServer implements Initializable {
             server = (OPCServer) fxTable.getSelectionModel().getSelectedItem();
             Factory.getInstance().getDeleteDAO().deleteServerOPC(server);
         }else OPCErrorCL.getInstance().errorSelect();
-
+        getServerTable();
     }
 
     public void onTags(ActionEvent event){
@@ -123,8 +115,8 @@ public class FXAddServer implements Initializable {
     }
 
     private void openNewStage(ActionEvent event, String view, String title){
+        Stage stage = new Stage();
         try {
-            Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(view));
             stage.setTitle(title);
             stage.setResizable(false);
@@ -138,6 +130,24 @@ public class FXAddServer implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        getServerTable();
+    }
 
+    public void onFirst(ActionEvent event) {
+        CreateBase createBase = new CreateBase();
+        createBase.createBase();
+    }
+
+    protected void getServerTable(){
+        fxID.setCellValueFactory(new PropertyValueFactory<OPCServer, Integer>("id"));
+        fxOPCServer.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("opcServer"));
+        fxAddress.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("serverName"));
+        fxStatus.setCellValueFactory(new PropertyValueFactory<OPCServer, Integer>("ServerStatus"));
+        fxTime.setCellValueFactory(new PropertyValueFactory<OPCServer, Integer>("time"));
+        fxClientName.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("clientNameForOPC"));
+        fxGroup.setCellValueFactory(new PropertyValueFactory<OPCServer, String>("nameGroup"));
+        List<OPCServer> list = Factory.getInstance().getSelectDAO().getOPCServer();
+        ObservableList<OPCServer> data = FXCollections.observableArrayList(list);
+        fxTable.setItems(data);
     }
 }

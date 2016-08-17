@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opcclient.wolf.controller.FXupdTags">
+   <children>
+      <AnchorPane prefHeight="204.0" prefWidth="475.0">
+         <children>
+            <Button layoutX="288.0" layoutY="167.0" mnemonicParsing="false" onAction="#onSave" text="Save" AnchorPane.rightAnchor="10.0" />
+            <TextField fx:id="fxf1" layoutX="101.0" layoutY="20.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Label text="ObjID" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0" />
+            <TextField fx:id="fxf5" layoutX="101.0" layoutY="131.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0" />
+            <Label layoutX="10.0" layoutY="45.0" text="ItemName" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+            <TextField fx:id="fxf3" layoutX="101.0" layoutY="70.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0" />
+            <Label layoutX="10.0" layoutY="74.0" text="PropType" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="74.0" />
+            <TextField fx:id="fxf2" layoutX="100.0" layoutY="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+            <Label layoutX="8.0" layoutY="104.0" text="EventType" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="105.0" />
+            <TextField fx:id="fxf4" layoutX="101.0" layoutY="101.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0" />
+            <Label layoutX="13.0" layoutY="134.0" text="ObjType" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="135.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

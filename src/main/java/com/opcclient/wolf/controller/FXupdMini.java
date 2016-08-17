@@ -32,7 +32,7 @@ public class FXupdMini implements Initializable {
     Label fxL0;
 
     public void onSave(ActionEvent event){
-       try {
+        try {
            OPCServer server = new OPCServer();
            server.setOpcServer(fxf1.getText());
            server.setServerName(fxf2.getText());
@@ -42,9 +42,9 @@ public class FXupdMini implements Initializable {
            server.setNameGroup(fxf6.getText());
            server.setId(Integer.parseInt(fxL0.getText()));
            Factory.getInstance().getUpdateDAO().updServerOPC(server);
-       }catch (Exception e){
+        }catch (Exception e){
            OPCErrorCL.getInstance().errorAny(e.toString());
-       }
+        }
     }
 
     public void initialize(URL location, ResourceBundle resources) {

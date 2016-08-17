@@ -8,4 +8,6 @@ import java.util.List;
 public interface SelectDAO {
 
     public List<OPCServer> getOPCServer();
+
+    public List<BaseOPC> getOPCTags(int id);
 }

@@ -14,7 +14,7 @@
       <TextField fx:id="fxf5" layoutX="91.0" layoutY="180.0" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="155.0" />
       <TextField fx:id="fxf6" layoutX="107.0" layoutY="242.0" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="185.0" />
       <Button layoutX="253.0" layoutY="223.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
-      <Label fx:id="fxL0" layoutX="138.0" layoutY="15.0" prefHeight="17.0" prefWidth="0.0" text="1" AnchorPane.leftAnchor="138.0" AnchorPane.topAnchor="15.0" />
+      <Label fx:id="fxL0" layoutX="138.0" layoutY="15.0" prefHeight="17.0" prefWidth="148.0" text="1" AnchorPane.leftAnchor="138.0" AnchorPane.topAnchor="15.0" />
       <Label layoutX="60.0" layoutY="50.0" text="OPC Server" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="40.0" />
       <Label layoutX="15.0" layoutY="192.0" text="Client Name" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="160.0" />
       <Label layoutX="15.0" layoutY="143.0" text="Time" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="130.0" />

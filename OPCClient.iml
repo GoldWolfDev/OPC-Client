@@ -23,8 +23,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jeasyopc" level="project" />
-    <orderEntry type="library" name="sqljdbc4" level="project" />
-    <orderEntry type="library" name="jfxmessagebox-1.1.0" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:4.1.6.Final" level="project" />
     <orderEntry type="library" name="Maven: antlr:antlr:2.7.7" level="project" />
@@ -36,5 +34,7 @@
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:4.1.6.Final" level="project" />
+    <orderEntry type="library" name="sqljdbc4" level="project" />
+    <orderEntry type="library" name="jfxmessagebox-1.1.0" level="project" />
   </component>
 </module>

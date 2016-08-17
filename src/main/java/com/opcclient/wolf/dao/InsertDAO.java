@@ -10,6 +10,6 @@ public interface InsertDAO {
 
     public void addServerOPC(OPCServer addOPCServer);
 
-    public void addItems(List<BaseOPC> opcItem);
+    public void addItems(BaseOPC opcItem);
 
 }

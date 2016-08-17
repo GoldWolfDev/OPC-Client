@@ -16,15 +16,22 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="718.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <TableView fx:id="fxTags" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="718.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="fxid" prefWidth="75.0" text="Id" />
+                              <TableColumn fx:id="fxObjID" prefWidth="75.0" text="ObjID" />
+                              <TableColumn fx:id="fxItemName" prefWidth="75.0" text="ItemName" />
+                              <TableColumn fx:id="fxPropType" prefWidth="75.0" text="PropType" />
+                            <TableColumn fx:id="fxEvent" prefWidth="75.0" text="EventType" />
+                              <TableColumn fx:id="fxObjType" prefWidth="75.0" text="ObjType" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
-                        <Button layoutX="675.0" layoutY="332.0" mnemonicParsing="false" text="GetTagsFrom BD" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                        <Button layoutX="615.0" layoutY="332.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" />
-                        <Button layoutX="555.0" layoutY="332.0" mnemonicParsing="false" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="175.0" />
+                        <Button layoutX="675.0" layoutY="332.0" mnemonicParsing="false" onAction="#onGetTagsFromDB" text="GetTagsFrom BD" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                        <Button layoutX="615.0" layoutY="332.0" mnemonicParsing="false" onAction="#onDeleteTags" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+                        <Button layoutX="555.0" layoutY="332.0" mnemonicParsing="false" onAction="#onUpdateTags" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="175.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -45,8 +52,8 @@
                         </TableView>
                         <TreeView fx:id="fxNode" prefHeight="132.0" prefWidth="717.0" AnchorPane.bottomAnchor="229.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                         <Button layoutX="668.0" layoutY="147.0" mnemonicParsing="false" onAction="#onGetTree" text="GetTree" AnchorPane.bottomAnchor="199.0" AnchorPane.leftAnchor="668.0" />
-                        <Button layoutX="606.0" layoutY="336.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="75.0" />
-                        <Button layoutX="545.0" layoutY="336.0" mnemonicParsing="false" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="130.0" />
+                        <Button layoutX="606.0" layoutY="336.0" mnemonicParsing="false" onAction="#onTagsDelete" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="75.0" />
+                        <Button layoutX="545.0" layoutY="336.0" mnemonicParsing="false" onAction="#onSave" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="130.0" />
                      </children>
                   </AnchorPane>
             </content>

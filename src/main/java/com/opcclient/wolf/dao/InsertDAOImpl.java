@@ -29,7 +29,20 @@ public class InsertDAOImpl implements InsertDAO {
         }
     }
 
-    public void addItems(List<BaseOPC> opcItem) {
+    public void addItems(BaseOPC opcItem) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionConfig().openSession();
+            session.beginTransaction();
+            session.save(opcItem);
+            session.getTransaction().commit();
+        }catch (Exception ex){
+            OPCErrorCL.getInstance().errorSQLConnect();
+        }finally {
+            if (session != null){
+                session.close();
+            }
+        }
 
     }
 }

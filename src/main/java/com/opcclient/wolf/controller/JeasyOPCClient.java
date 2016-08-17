@@ -25,12 +25,12 @@ public class JeasyOPCClient {
 
     public JeasyOPCClient(){}
 
-    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ OPC Servers from IP Address
+    //получение OPC Servers from IP Address
     public List<String> getOPCServerList() {
-        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        //инициализация переменных
         String[] opcServers = new String[0];
         listOPCServer = new ArrayList<String>();
-        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        //коннест к компьютеру и забор тегов.
         JOpcBrowser.coInitialize();
         try {
             opcServers = JOpcBrowser.getOpcServers(ipAddress);
@@ -43,32 +43,35 @@ public class JeasyOPCClient {
             OPCErrorCL.getInstance().errorServer2();
         }
         JOpcBrowser.coUninitialize();
-        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        //возврат данных
         return listOPCServer;
     }
-    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    //получение дерева
     public List<String> getTree(OPCServer opcServer, String branch) {
         listTree = new ArrayList<String>();
-        JOpcBrowser.coInitialize();
         JOpcBrowser jbrowser = new JOpcBrowser(opcServer.getServerName(),
                 opcServer.getOpcServer(), "WolfCl");
         try {
+            JOpcBrowser.coInitialize();
             jbrowser.connect();
             String[] listBranch = jbrowser.getOpcBranch(branch);
             for (String mass : listBranch) {
                 listTree.add(mass);
             }
         } catch (ConnectivityException e) {
-            e.printStackTrace();
-        } catch (UnableIBrowseException e) {
-            e.printStackTrace();
-        } catch (UnableBrowseBranchException e) {
-            e.printStackTrace();
+            OPCErrorCL.getInstance().errorAny("The connection to the OPC Server has failed: "+ opcServer.getServerName());
         }
-        JOpcBrowser.coUninitialize();
+        catch (UnableIBrowseException e) {
+            OPCErrorCL.getInstance().errorAny(e.toString());
+        } catch (UnableBrowseBranchException e) {
+            OPCErrorCL.getInstance().errorAny(e.toString());
+        }finally {
+            JOpcBrowser.coUninitialize();
+        }
+
         return listTree;
     }
-    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    //получение списка
     public List<ItemTags> getListTags(OPCServer opcServer, String branch){
         listTags = new ArrayList<ItemTags>();
         JOpcBrowser.coInitialize();
