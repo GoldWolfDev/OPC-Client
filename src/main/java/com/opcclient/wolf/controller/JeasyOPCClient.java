@@ -25,12 +25,12 @@ public class JeasyOPCClient {
 
     public JeasyOPCClient(){}
 
-    //получение OPC Servers from IP Address
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ OPC Servers from IP Address
     public List<String> getOPCServerList() {
-        //инициализация переменных
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         String[] opcServers = new String[0];
         listOPCServer = new ArrayList<String>();
-        //коннест к компьютеру и забор тегов.
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
         JOpcBrowser.coInitialize();
         try {
             opcServers = JOpcBrowser.getOpcServers(ipAddress);
@@ -43,10 +43,10 @@ public class JeasyOPCClient {
             OPCErrorCL.getInstance().errorServer2();
         }
         JOpcBrowser.coUninitialize();
-        //возврат данных
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         return listOPCServer;
     }
-    //получение дерева
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public List<String> getTree(OPCServer opcServer, String branch) {
         listTree = new ArrayList<String>();
         JOpcBrowser jbrowser = new JOpcBrowser(opcServer.getServerName(),
@@ -71,7 +71,7 @@ public class JeasyOPCClient {
 
         return listTree;
     }
-    //получение списка
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public List<ItemTags> getListTags(OPCServer opcServer, String branch){
         listTags = new ArrayList<ItemTags>();
         JOpcBrowser.coInitialize();
@@ -86,15 +86,15 @@ public class JeasyOPCClient {
                 }
             }
         } catch (ConnectivityException e) {
-            e.printStackTrace();
+            OPCErrorCL.getInstance().errorAny(e.toString());
         } catch (UnableAddItemException e) {
-            e.printStackTrace();
+            OPCErrorCL.getInstance().errorAny(e.toString());
         } catch (UnableBrowseLeafException e) {
-            e.printStackTrace();
+            OPCErrorCL.getInstance().errorAny(e.toString());
         } catch (UnableAddGroupException e) {
-            e.printStackTrace();
+            OPCErrorCL.getInstance().errorAny(e.toString());
         } catch (UnableIBrowseException e) {
-            e.printStackTrace();
+            OPCErrorCL.getInstance().errorAny(e.toString());
         }
         JOpcBrowser.coUninitialize();
         return listTags;

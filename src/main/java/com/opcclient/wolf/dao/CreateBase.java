@@ -6,9 +6,7 @@ import com.opcclient.wolf.model.OPCServer;
 import com.opcclient.wolf.util.HibernateUtil;
 import org.hibernate.Session;
 
-/**
- * Created by RafikovAR on 14.08.2016.
- */
+
 public class CreateBase {
 
     public void createBase(){

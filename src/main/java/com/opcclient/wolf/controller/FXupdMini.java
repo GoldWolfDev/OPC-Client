@@ -32,7 +32,6 @@ public class FXupdMini implements Initializable {
     Label fxL0;
 
     public void onSave(ActionEvent event){
-        try {
            OPCServer server = new OPCServer();
            server.setOpcServer(fxf1.getText());
            server.setServerName(fxf2.getText());
@@ -42,13 +41,9 @@ public class FXupdMini implements Initializable {
            server.setNameGroup(fxf6.getText());
            server.setId(Integer.parseInt(fxL0.getText()));
            Factory.getInstance().getUpdateDAO().updServerOPC(server);
-        }catch (Exception e){
-           OPCErrorCL.getInstance().errorAny(e.toString());
-        }
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        try{
             fxf1.setText(FXAddServer.getServer().getOpcServer());
             fxf2.setText(FXAddServer.getServer().getServerName());
             fxf3.setText(String.valueOf(FXAddServer.getServer().isServerStatus()));
@@ -56,8 +51,5 @@ public class FXupdMini implements Initializable {
             fxf5.setText(FXAddServer.getServer().getClientNameForOPC());
             fxf6.setText(FXAddServer.getServer().getNameGroup());
             fxL0.setText(String.valueOf(FXAddServer.getServer().getId()));
-        }catch (Exception e){
-            OPCErrorCL.getInstance().errorAny(e.toString());
-        }
     }
 }

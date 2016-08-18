@@ -8,9 +8,6 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-/**
- * Created by RafikovAR on 09.08.2016.
- */
 public class InsertDAOImpl implements InsertDAO {
 
     public void addServerOPC(OPCServer addOPCServer) {

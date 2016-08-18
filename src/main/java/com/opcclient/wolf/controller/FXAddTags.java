@@ -73,9 +73,6 @@ public class FXAddTags implements Initializable {
     @FXML
     private TableView<BaseOPC> fxTags;
 
-
-
-
     //metods
 
     public static BaseOPC getBaseopc() {
@@ -127,7 +124,6 @@ public class FXAddTags implements Initializable {
         }else OPCErrorCL.getInstance().errorSelect();
     }
 
-
     public void onTagsDelete(ActionEvent event) {
         if (fxTable.getSelectionModel().getSelectedItem() != null){
             fxTable.getItems().remove(fxTable.getSelectionModel().getSelectedIndex());
@@ -171,18 +167,15 @@ public class FXAddTags implements Initializable {
     }
 
     private void firstGetBranch(){
-        try {
-            List<String> list = opcClient.getTree(opc,"");
-            TreeItem<String> item = new TreeItem<String>(opc.getOpcServer());
-            item.setExpanded(true);
-            for (String branch : list){
-                item.getChildren().addAll(
-                        new TreeItem<String>(branch)
-                );
-            }
-            fxNode.setRoot(item);
-        }catch (Exception e){
-            OPCErrorCL.getInstance().errorAny(e.toString());
+        List<String> list = opcClient.getTree(opc,"");
+        TreeItem<String> item = new TreeItem<String>(opc.getOpcServer());
+        item.setExpanded(true);
+        for (String branch : list){
+            item.getChildren().addAll(
+                    new TreeItem<String>(branch)
+            );
         }
+        fxNode.setRoot(item);
     }
+
 }

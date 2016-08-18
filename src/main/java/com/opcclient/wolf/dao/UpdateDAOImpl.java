@@ -6,9 +6,6 @@ import com.opcclient.wolf.model.OPCServer;
 import com.opcclient.wolf.util.HibernateUtil;
 import org.hibernate.Session;
 
-/**
- * Created by RafikovAR on 10.08.2016.
- */
 public class UpdateDAOImpl implements UpdateDAO {
 
     public void updServerOPC(OPCServer opcServer) {
@@ -38,7 +35,6 @@ public class UpdateDAOImpl implements UpdateDAO {
                     .setParameter("var3",opc.getObjType())
                     .setParameter("var",opc.getId())
                     .setParameter("var4",opc.getPropType()).executeUpdate();
-           // session.update(opcServer);
             session.getTransaction().commit();
             System.out.println(i);
         }catch (Exception ex){
@@ -49,21 +45,4 @@ public class UpdateDAOImpl implements UpdateDAO {
             }
         }
     }
-
-//    public void updOPCTags(BaseOPC opc) {
-//        Session session = null;
-//        try {
-//            session = HibernateUtil.getSessionConfig().openSession();
-//            session.beginTransaction();
-//            session.update(opc);
-//            session.getTransaction().commit();
-//        }catch (Exception ex){
-//            //OPCErrorCL.getInstance().errorSQLConnect();
-//            System.out.println(ex.toString());
-//        }finally {
-//            if (session != null){
-//                session.close();
-//            }
-//        }
-//    }
 }

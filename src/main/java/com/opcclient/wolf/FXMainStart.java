@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class FXMainStart extends Application {
 
     private String title = "Wolf Client";
+    private String path = "view/FXAddServer.fxml";
 
     public static void main(String[] args) {
         launch(args);
@@ -19,7 +20,7 @@ public class FXMainStart extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/FXAddServer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(path));
         primaryStage.setTitle(title);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

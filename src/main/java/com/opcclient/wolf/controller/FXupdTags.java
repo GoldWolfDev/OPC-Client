@@ -28,7 +28,6 @@ public class FXupdTags implements Initializable {
     TextField fxf5;
 
     public void onSave(ActionEvent event){
-        try {
            BaseOPC server = new BaseOPC();
            server.setObjID(fxf1.getText());
            server.setItemName(fxf2.getText());
@@ -37,20 +36,13 @@ public class FXupdTags implements Initializable {
            server.setObjType(Integer.parseInt(fxf5.getText()));
            server.setId(FXAddTags.getBaseopc().getId());
            Factory.getInstance().getUpdateDAO().updOPCTags(server);
-        }catch (Exception e){
-           OPCErrorCL.getInstance().errorAny(e.toString());
-        }
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        try{
             fxf1.setText(FXAddTags.getBaseopc().getObjID());
             fxf2.setText(FXAddTags.getBaseopc().getItemName());
             fxf3.setText(String.valueOf(FXAddTags.getBaseopc().getPropType()));
             fxf4.setText(String.valueOf(FXAddTags.getBaseopc().getEventType()));
             fxf5.setText(String.valueOf(FXAddTags.getBaseopc().getObjType()));
-        }catch (Exception e){
-            OPCErrorCL.getInstance().errorAny(e.toString());
-        }
     }
 }
